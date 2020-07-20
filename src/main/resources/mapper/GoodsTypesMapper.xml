@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zngl.dao.GoodsTypesDAO">
+
+    <resultMap id="goodsTypesMap" type="com.zngl.model.GoodsTypes">
+        <id property="id" column="id"/>
+        <result property="typeName" column="type_name"/>
+        <result property="num" column="num"/>
+        <result property="state" column="state" />
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="goodsTypesMap">
+        SELECT id,type_name,num,state FROM goods_types
+        WHERE id=#{id}
+    </select>
+
+    <!--查全部不分页-->
+    <select id="findAll" resultMap="goodsTypesMap">
+        SELECT * FROM goods_types
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO goods_types(id,type_name,num,state)
+        VALUES (#{id},#{typeName},#{num},#{state})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE goods_types SET type_name=#{typeName},num=#{num},state=#{state}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM goods_types
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

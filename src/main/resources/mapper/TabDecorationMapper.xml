@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zngl.dao.TabDecorationDAO">
+
+    <resultMap id="tabDecorationMap" type="com.zngl.model.TabDecoration">
+        <id property="id" column="id"/>
+        <result property="icon" column="icon"/>
+        <result property="select_icon" column="select_icon"/>
+        <result property="name" column="name"/>
+        <result property="color" column="color"/>
+        <result property="select_color" column="select_color"/>
+        <result property="link" column="link"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tabDecorationMap">
+        SELECT id,icon,select_icon,name,color,select_color,link FROM tab_decoration
+        WHERE id=#{id}
+    </select>
+
+
+    <!--查全部不分页-->
+    <select id="findAll" resultMap="tabDecorationMap">
+        SELECT * FROM tab_decoration
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO tab_decoration(id,icon,select_icon,name,color,select_color,link)
+        VALUES (#{id},#{icon},#{select_icon},#{name},#{color},#{select_color},#{link})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE tab_decoration SET icon=#{icon},select_icon=#{select_icon},name=#{name},color=#{color},select_color=#{select_color},link=#{link}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM tab_decoration
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

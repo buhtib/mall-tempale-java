@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zngl.dao.HomeDecorationDAO">
+
+    <resultMap id="homeDecorationMap" type="com.zngl.model.HomeDecorationType">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="children" ofType="com.zngl.model.HomeDecorationTypeList" column="parent_id">
+            <id property="id" column="list_id"></id>
+            <result property="parentId" column="parent_id"></result>
+            <result property="name" column="list_name"></result>
+            <result property="type" column="type"></result>
+            <result property="settingType" column="setting_type"></result>
+            <result property="num" column="num"></result>
+            <result property="currentNum" column="current_num"></result>
+        </collection>
+    </resultMap>
+
+    <resultMap id="homeDecorationTypeListMap" type="com.zngl.model.HomeDecorationTypeList">
+        <id property="id" column="list_id"></id>
+        <result property="parentId" column="parent_id"></result>
+        <result property="name" column="list_name"></result>
+        <result property="type" column="type"></result>
+        <result property="settingType" column="setting_type"></result>
+        <result property="num" column="num"></result>
+        <result property="currentNum" column="current_num"></result>
+    </resultMap>
+
+    <!--查全部不分页-->
+    <select id="findAll" resultMap="homeDecorationMap">
+        SELECT * FROM home_decoration_type type
+        LEFT JOIN home_decoration_type_list type_list on type_list.parent_id = type.id
+    </select>
+
+    <!--通过ID查询单个HomeDecorationTypeList-->
+    <select id="findTypeListById" resultMap="homeDecorationTypeListMap">
+        SELECT * FROM home_decoration_type_list
+        WHERE list_id=#{id}
+    </select>
+
+    <!--更新左侧选择的数量-->
+    <update id="updateCurrentNum">
+        UPDATE home_decoration_type_list SET current_num=#{currentNum}
+        WHERE list_id=#{id}
+    </update>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO home_decoration_type(id,name)
+        VALUES (#{id},#{name})
+    </insert>
+
+
+
+</mapper>

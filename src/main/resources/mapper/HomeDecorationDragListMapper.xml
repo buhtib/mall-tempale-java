@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zngl.dao.HomeDecorationDragListDAO">
+
+    <resultMap id="homeDecorationDragListMap" type="com.zngl.model.HomeDecorationDragList">
+        <id property="id" column="id"/>
+        <result property="img" column="img"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="settingType" column="setting_type"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="homeDecorationDragListMap">
+        SELECT id,img,name,type,setting_type FROM home_decoration_drag_list
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="homeDecorationDragListMap">
+        SELECT id,img,name,type,setting_type FROM home_decoration_drag_list
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO home_decoration_drag_list(id,img,name,type,setting_type)
+        VALUES (#{id},#{img},#{name},#{type},#{settingType})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE home_decoration_drag_list SET img=#{img},name=#{name},type=#{type},setting_type=#{settingType}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM home_decoration_drag_list
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

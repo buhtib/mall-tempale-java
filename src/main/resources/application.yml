@@ -1,0 +1,39 @@
+
+server:
+  port: 15000
+
+spring:
+
+  datasource:
+    name: zngl,
+    url: jdbc:mysql://192.168.31.80:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: $_Tang1998
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    maxActive: 50
+    initialSize: 2
+    minIdle: 2
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    maxOpenPreparedStatements: 20
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zngl.pojo
+  type-handlers-package: com.zngl.config
+
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
