@@ -33,18 +33,16 @@ public class HomeDecorationServiceImpl implements HomeDecorationService {
     }
 
     @Override
-    public View updateCurrentNum(List<HomeDecorationType> list) {
-        for (HomeDecorationType type : list) {
-            for (HomeDecorationTypeList item : type.getChildren()) {
-                try {
-                    HomeDecorationTypeList currentList = homeDecorationDAO.findTypeListById(item.getId());
-                    if (currentList != null) {
-                        homeDecorationDAO.updateCurrentNum(item);
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    return new RestError("更新失败");
+    public View updateCurrentNum(List<HomeDecorationTypeList> list) {
+        for (HomeDecorationTypeList typeList : list) {
+            try {
+                HomeDecorationTypeList currentList = homeDecorationDAO.findTypeListById(null, typeList.getId());
+                if (currentList != null) {
+                    homeDecorationDAO.updateCurrentNum(typeList);
                 }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return new RestError("更新失败");
             }
         }
         return new RestData("更新成功");

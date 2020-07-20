@@ -1,6 +1,7 @@
 package com.zngl.service;
 
 import com.zngl.model.HomeDecorationType;
+import com.zngl.model.HomeDecorationTypeList;
 import org.springframework.web.servlet.View;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface HomeDecorationService {
      *
      * @param homeDecorationTypeList
      */
-    View updateCurrentNum(List<HomeDecorationType> homeDecorationTypeList);
+    View updateCurrentNum(List<HomeDecorationTypeList> homeDecorationTypeList);
 
 
 }

@@ -1,6 +1,6 @@
 package com.zngl.controller;
 
-import com.zngl.model.HomeDecorationType;
+import com.zngl.model.HomeDecorationTypeList;
 import com.zngl.service.HomeDecorationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class HomeDecorationController {
     }
 
     @PostMapping
-    public View update(@RequestBody List<HomeDecorationType> homeDecorationTypeList) {
-        return homeDecorationService.updateCurrentNum(homeDecorationTypeList);
+    public View update(@RequestBody List<HomeDecorationTypeList> list) {
+        return homeDecorationService.updateCurrentNum(list);
     }
 }

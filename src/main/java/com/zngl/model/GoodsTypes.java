@@ -2,6 +2,8 @@ package com.zngl.model;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  *
  */
@@ -14,6 +16,7 @@ public class GoodsTypes {
     /**
      *
      */
+    @NotBlank(message = "")
     private String type_name;
     /**
      *

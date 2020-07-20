@@ -19,9 +19,9 @@ public interface HomeDecorationDAO {
     /**
      * 根据id查HomeDecorationTypeList
      *
-     * @param id
+     * @param id HomeDecorationType的id
      */
-    HomeDecorationTypeList findTypeListById(Integer id);
+    HomeDecorationTypeList findTypeListById(Integer id, Integer parent_id);
 
 
     /**
