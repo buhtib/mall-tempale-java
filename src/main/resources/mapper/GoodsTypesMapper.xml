@@ -4,7 +4,7 @@
 
     <resultMap id="goodsTypesMap" type="com.zngl.model.GoodsTypes">
         <id property="id" column="id"/>
-        <result property="typeName" column="type_name"/>
+        <result property="type_name" column="type_name"/>
         <result property="num" column="num"/>
         <result property="state" column="state" />
     </resultMap>
@@ -23,12 +23,12 @@
     <!--新增-->
     <insert id="insert">
         INSERT INTO goods_types(id,type_name,num,state)
-        VALUES (#{id},#{typeName},#{num},#{state})
+        VALUES (#{id},#{type_name},#{num},#{state})
     </insert>
 
     <!--修改-->
     <update id="update">
-        UPDATE goods_types SET type_name=#{typeName},num=#{num},state=#{state}
+        UPDATE goods_types SET type_name=#{type_name},num=#{num},state=#{state}
         WHERE id=#{id}
     </update>
 

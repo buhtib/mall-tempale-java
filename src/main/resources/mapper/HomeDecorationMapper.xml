@@ -7,23 +7,23 @@
         <result property="name" column="name"/>
         <collection property="children" ofType="com.zngl.model.HomeDecorationTypeList" column="parent_id">
             <id property="id" column="list_id"></id>
-            <result property="parentId" column="parent_id"></result>
+            <result property="parent_id" column="parent_id"></result>
             <result property="name" column="list_name"></result>
             <result property="type" column="type"></result>
-            <result property="settingType" column="setting_type"></result>
+            <result property="setting_type" column="setting_type"></result>
             <result property="num" column="num"></result>
-            <result property="currentNum" column="current_num"></result>
+            <result property="current_num" column="current_num"></result>
         </collection>
     </resultMap>
 
     <resultMap id="homeDecorationTypeListMap" type="com.zngl.model.HomeDecorationTypeList">
-        <id property="id" column="list_id"></id>
-        <result property="parentId" column="parent_id"></result>
-        <result property="name" column="list_name"></result>
+        <id property="id" column="id"></id>
+        <result property="parent_id" column="parent_id"></result>
+        <result property="name" column="name"></result>
         <result property="type" column="type"></result>
-        <result property="settingType" column="setting_type"></result>
+        <result property="setting_type" column="setting_type"></result>
         <result property="num" column="num"></result>
-        <result property="currentNum" column="current_num"></result>
+        <result property="current_num" column="current_num"></result>
     </resultMap>
 
     <!--查全部不分页-->
@@ -35,13 +35,13 @@
     <!--通过ID查询单个HomeDecorationTypeList-->
     <select id="findTypeListById" resultMap="homeDecorationTypeListMap">
         SELECT * FROM home_decoration_type_list
-        WHERE list_id=#{id}
+        WHERE id=#{id}
     </select>
 
     <!--更新左侧选择的数量-->
     <update id="updateCurrentNum">
-        UPDATE home_decoration_type_list SET current_num=#{currentNum}
-        WHERE list_id=#{id}
+        UPDATE home_decoration_type_list SET current_num=#{current_num}
+        WHERE id=#{id}
     </update>
 
     <!--新增-->

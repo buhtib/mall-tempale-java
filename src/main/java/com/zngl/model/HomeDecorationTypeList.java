@@ -15,7 +15,7 @@ public class HomeDecorationTypeList {
     /**
      *
      */
-    private Integer parentId;
+    private Integer parent_id;
     /**
      *
      */
@@ -27,7 +27,7 @@ public class HomeDecorationTypeList {
     /**
      *
      */
-    private String settingType;
+    private String setting_type;
     /**
      *
      */
@@ -35,5 +35,5 @@ public class HomeDecorationTypeList {
     /**
      *
      */
-    private int currentNum;
+    private int current_num;
 }

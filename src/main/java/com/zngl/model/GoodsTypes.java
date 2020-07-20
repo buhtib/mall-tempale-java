@@ -14,7 +14,7 @@ public class GoodsTypes {
     /**
      *
      */
-    private String typeName;
+    private String type_name;
     /**
      *
      */
