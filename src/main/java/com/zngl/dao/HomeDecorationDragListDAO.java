@@ -16,7 +16,6 @@ public interface HomeDecorationDragListDAO {
      */
     HomeDecorationDragList findById(Integer id);
 
-
     /**
      * 分页查询
      *
